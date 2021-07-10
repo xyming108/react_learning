@@ -16,6 +16,15 @@
         <script type="text/javascript" src="../js/babel.min.js"></script>
 
         <script type="text/babel">
+
+            /*
+                高阶函数：如果一个函数符合下面2个规范中的任何一个，那该函数就是高阶函数
+                    1、若A函数，接收的参数是一个函数，那么A就可以称之为高阶函数
+                    2、若A函数，调用的返回值依然是一个函数，那么A就可以称之为高阶函数
+
+                函数的柯里化：通过函数调用继续返回函数的方式，实现多次接收参数最后统一处理的函数编码形式
+            * */
+
             //创建组件
             class Login extends React.Component {
                 //初始化状态
@@ -24,12 +33,10 @@
                     password: ''
                 }
 
-                saveUsername = (event) => {
-                    this.setState({username: event.target.value})
-                }
-
-                savePassword = (event) => {
-                    this.setState({password: event.target.value})
+                saveFormData = (dataType) => {
+                    return (event) => {
+                        this.setState({[dataType]: event.target.value})
+                    }
                 }
 
                 handleSubmit = (event) => {
@@ -41,8 +48,8 @@
                 render() {
                     return (
                         <form onSubmit={this.handleSubmit}>
-                            用户名:<input onChange={this.saveUsername} type="text" name="username"/>
-                            密码:<input onChange={this.savePassword} type="password" name="password"/>
+                            用户名:<input onChange={this.saveFormData('username')} type="text" name="username"/>
+                            密码:<input onChange={this.saveFormData('password')} type="password" name="password"/>
                             <button>登录</button>
                         </form>
                     )
