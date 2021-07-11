@@ -17,11 +17,21 @@
 
         <script type="text/babel">
             class Count extends React.Component {
+
+                //初始化状态
+                state = {count: 0}
+
+                //加1按钮的回调
+                add = () => {
+                    const {count} = this.state
+                    this.setState({count: count + 1})
+                }
+
                 render() {
                     return (
                         <div>
-                            <h2>当前求和为？？？</h2>
-                            <button>点我+1</button>
+                            <h2>当前求和为{this.state.count}</h2>
+                            <button onClick={this.add}>点我+1</button>
                         </div>
                     )
                 }
