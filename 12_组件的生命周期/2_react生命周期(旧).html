@@ -16,6 +16,24 @@
         <script type="text/javascript" src="../js/babel.min.js"></script>
 
         <script type="text/babel">
+
+            /*
+                1、初始化阶段：由ReactDOM.render()触发---初次渲染
+                    1、constructor()
+                    2、componentWillMount()
+                    3、render()
+                    4、componentDidMount()       ==>常用
+                                一般在这个钩子中做一些初始化的事，例如：开启定时器、发送网络请求、订阅消息
+                2、更新阶段：由组件内部this.setState()或父组件重新render触发
+                    1、shouldComponentUpdate()
+                    2、componentWillUpdate()
+                    3、render()      ==>必须使用的一个
+                    4、componentDidUpdate()
+                3、卸载组件：由ReactDOM.unmountComponentAtNode()触发
+                    1、componentWillUnmount()        ==>常用
+                                一般在这个钩子中做一些收尾的事，例如：关闭定时器、取消消息订阅
+            * */
+
             class Count extends React.Component {
                 constructor(props) {
                     super(props);
@@ -83,7 +101,60 @@
                 }
             }
 
-            ReactDOM.render(<Count/>, document.getElementById('test'))
+            //父组件A
+            class A extends React.Component {
+                //初始化状态
+                state = {carName: '奔驰'}
+
+                changeCar = () => {
+                    this.setState({carName: '奥拓'})
+                }
+
+                render() {
+                    console.log("A-render")
+                    return (
+                        <div>
+                            <div>A</div>
+                            <button onClick={this.changeCar}>换车</button>
+                            <B carName={this.state.carName}/>
+                        </div>
+                    )
+                }
+            }
+
+            //子组件B
+            class B extends React.Component {
+
+                componentWillReceiveProps(props) {
+                    console.log("componentWillReceiveProps", props)
+                }
+
+                //控制组件更新的阀门
+                shouldComponentUpdate() {
+                    console.log("shouldComponentUpdate")
+                    return true
+                }
+
+                //组件将要更新的钩子
+                componentWillUpdate() {
+                    console.log("componentWillUpdate")
+                }
+
+                //组件更新完毕的钩子
+                componentDidUpdate() {
+                    console.log("componentDidUpdate")
+                }
+
+                render() {
+                    console.log("B-render")
+                    return (
+                        <div>B接收到的车是:{this.props.carName}</div>
+                    )
+                }
+            }
+
+            //渲染组件
+            ReactDOM.render(<A/>, document.getElementById('test'))
         </script>
 
     </body>
