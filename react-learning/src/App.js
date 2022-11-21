@@ -1,5 +1,6 @@
 import './App.css';
 import Test01Context from "./AdvancedGuides/Context/Test-01-Context";
+import Test01Fragments from "./AdvancedGuides/Fragments/Test-01-Fragments";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
         // </div>
         <div>
             <Test01Context/>
+            <Test01Fragments/>
         </div>
     );
 }
