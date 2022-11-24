@@ -1,6 +1,8 @@
 import './App.css';
 import Test01Context from "./AdvancedGuides/Context/Test-01-Context";
 import Test01Fragments from "./AdvancedGuides/Fragments/Test-01-Fragments";
+import MouseTracker2 from "./AdvancedGuides/RenderProps/Test-02-RenderProps";
+import Test01Hook from "./AdvancedGuides/Hook/Test-01-Hook";
 
 function App() {
     return (
@@ -23,6 +25,9 @@ function App() {
         <div>
             <Test01Context/>
             <Test01Fragments/>
+            {/*<MouseTracker1/>*/}
+            {/*<MouseTracker2/>*/}
+            <Test01Hook/>
         </div>
     );
 }
