@@ -1,8 +1,11 @@
 import './App.css';
 import Test01Context from "./AdvancedGuides/Context/Test-01-Context";
 import Test01Fragments from "./AdvancedGuides/Fragments/Test-01-Fragments";
-import MouseTracker2 from "./AdvancedGuides/RenderProps/Test-02-RenderProps";
 import Test01Hook from "./AdvancedGuides/Hook/Test-01-Hook";
+import Test02Hook from "./AdvancedGuides/Hook/Test-02-Hook";
+import Test04Hook from "./AdvancedGuides/Hook/Test-04-Hook";
+import Test03Hook from "./AdvancedGuides/Hook/Test-03-Hook";
+import Test05Hook from "./AdvancedGuides/Hook/Test-05-Hook";
 
 function App() {
     return (
@@ -23,11 +26,19 @@ function App() {
         //   </header>
         // </div>
         <div>
+            <p>----------------context----------------</p>
             <Test01Context/>
+            <p>----------------Fragments----------------</p>
             <Test01Fragments/>
+            <p>----------------renderProps----------------</p>
             {/*<MouseTracker1/>*/}
             {/*<MouseTracker2/>*/}
+            <p>----------------hook----------------</p>
             <Test01Hook/>
+            <Test02Hook/>
+            <Test03Hook/>
+            <Test04Hook/>
+            <Test05Hook/>
         </div>
     );
 }

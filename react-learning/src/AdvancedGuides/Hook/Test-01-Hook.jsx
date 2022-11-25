@@ -22,7 +22,7 @@ function Test01Hook() {
             <p>{fruits}</p>
             <p>{todos.map((item) => {
                 return (
-                    <div>{item.aa}</div>
+                    <div key={Math.random()}>{item.aa}</div>
                 )
             })}</p>
             <button onClick={() => {
